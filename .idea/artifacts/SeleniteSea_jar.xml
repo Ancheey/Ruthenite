@@ -1,8 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="SeleniteSea:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/SeleniteSea_jar</output-path>
-    <root id="archive" name="SeleniteSea.jar">
-      <element id="module-output" name="SeleniteSea" />
+  <artifact type="jar" name="Ruthenite:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Ruthenite_jar</output-path>
+    <root id="archive" name="Ruthenite.jar">
+      <element id="module-output" name="Ruthenite" />
       <element id="extracted-dir" path="$PROJECT_DIR$/selenium/lib/async-http-client-2.12.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/selenium/lib/async-http-client-netty-utils-2.12.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/selenium/lib/auto-common-1.2.1.jar" path-in-jar="/" />
