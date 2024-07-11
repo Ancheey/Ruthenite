@@ -15,8 +15,8 @@ public abstract class CommandVar extends Command{
      * @return the value contained under this variable name in the Selenium Manager. Returns 0 if that variable doesn't exist
      */
     public int getValue(){
-        if(SeleniumManager.I().getVars().containsKey(value)){
-            return SeleniumManager.I().getVar(value);
+        if(RutheniteCore.I().getVars().containsKey(value)){
+            return RutheniteCore.I().getVar(value);
         }
         else{
             try{

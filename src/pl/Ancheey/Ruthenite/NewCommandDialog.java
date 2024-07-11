@@ -115,7 +115,7 @@ public class NewCommandDialog extends JDialog {
         Constructor<?> constructor = ((Class<? extends Command>)typeBox.getSelectedItem()).getConstructors()[0];
         try { //here the fun begins
 
-            //This one takes all values contained in the inputs and mashes them into a list. It doesn't know what type of variables these are thoguh
+            //This one takes all values contained in the inputs and mashes them into a list. It doesn't know what type of variables these are though
             List<Object> params = new ArrayList<>();
             for (NewCommandDialogInput c: inputs) {
                 params.add(c.getValue());

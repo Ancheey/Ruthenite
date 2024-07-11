@@ -37,8 +37,8 @@ public class MainWindow extends JFrame{
         setSize((int) (width/2), (int) (height*2/3));
 
         runButton.addActionListener((e)->{
-            SeleniumManager.I().setProgram(EditorStatementManager.I().getCurrentlySelected());
-            SeleniumManager.I().start();
+            RutheniteCore.I().setProgram(EditorStatementManager.I().getCurrentlySelected());
+            RutheniteCore.I().start();
         });
         newStatementButton.addActionListener((e)->{
             NewStatementDialog dialog = new NewStatementDialog();

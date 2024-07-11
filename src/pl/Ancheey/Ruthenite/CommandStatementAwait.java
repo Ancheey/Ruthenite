@@ -64,10 +64,10 @@ public class CommandStatementAwait extends CommandStatement{
         try {
             while (timeout > 0 && !statement.evaluate()) {
                 if(timeout > interval){
-                    SeleniumManager.I().sleep(interval);
+                    RutheniteCore.I().sleep(interval);
                     timeout -= interval;
                 }else{
-                    SeleniumManager.I().sleep(timeout);
+                    RutheniteCore.I().sleep(timeout);
                     timeout = 0;
                 }
             }

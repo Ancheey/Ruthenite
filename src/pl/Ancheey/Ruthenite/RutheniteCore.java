@@ -1,16 +1,12 @@
 package pl.Ancheey.Ruthenite;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class SeleniumManager extends Thread {
+public class RutheniteCore extends Thread {
 
-    public static String CHROMEDRIVER = "chromedriver.exe";
     public boolean used = false;
-    private static SeleniumManager instance;
-    private ChromeDriver engine;
+    private static RutheniteCore instance;
     private final Map<String,Integer> vars = new HashMap<>();
     private CommandStatement program;
 
@@ -19,20 +15,19 @@ public class SeleniumManager extends Thread {
      * THE INSTANCE WILL BE DUMPED IF THE PROCESS HAS FINISHED
      * @return Returns a new or currently active instance of Selenium Manager
      */
-    public static SeleniumManager I(){
+    public static RutheniteCore I(){
         if(instance == null || instance.used){
-            instance = new SeleniumManager();
+            instance = new RutheniteCore();
         }
         return instance;
     }
-    private SeleniumManager() {}
+    private RutheniteCore() {}
 
     /**
      * Tries to create a new engine and executes the bound program on it.
      */
     public void run(){
         try{
-            engine = new ChromeDriver();
             getProgram().execute();
             MainWindow.I().addTextToConsole( getProgram().name + " finished!");
         }
@@ -43,9 +38,6 @@ public class SeleniumManager extends Thread {
         used = true;
     }
 
-    public ChromeDriver getDriver() {
-        return engine;
-    }
     public Map<String,Integer> getVars() {
         return vars;
     }

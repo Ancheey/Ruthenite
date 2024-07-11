@@ -17,7 +17,7 @@ public class CommandSleep extends Command{
     @Override
     public void execute() {
         try {
-            SeleniumManager.I().sleep(interval);
+            RutheniteCore.I().sleep(interval);
         }
         catch(Exception ignored){
             //No need dealing with it

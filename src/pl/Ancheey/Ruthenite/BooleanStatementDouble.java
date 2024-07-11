@@ -25,8 +25,8 @@ public class BooleanStatementDouble implements BooleanStatement{
 
         //Finds out current variable if they exist
         //Changes strings to ints if possible
-            if(SeleniumManager.I().getVars().containsKey(firstValue)) {
-                val1 = SeleniumManager.I().getVar(firstValue);
+            if(RutheniteCore.I().getVars().containsKey(firstValue)) {
+                val1 = RutheniteCore.I().getVar(firstValue);
 
             }
             else{
@@ -34,9 +34,9 @@ public class BooleanStatementDouble implements BooleanStatement{
                     val1 = Integer.parseInt((String)val1);
                 }catch(Exception ignored){}
             }
-            if(SeleniumManager.I().getVars().containsKey(secondValue))
+            if(RutheniteCore.I().getVars().containsKey(secondValue))
             {
-                val2 = SeleniumManager.I().getVar(secondValue);
+                val2 = RutheniteCore.I().getVar(secondValue);
             }
             else{
                 try{

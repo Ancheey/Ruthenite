@@ -21,8 +21,6 @@ public class Main {
 
 
         //Class registration
-        CommandRegistry.I().register(CommandActionClick.class);
-        CommandRegistry.I().register(CommandOpen.class);
         CommandRegistry.I().register(CommandSleep.class);
         CommandRegistry.I().register(CommandStatementAwait.class);
         CommandRegistry.I().register(CommandStatementIf.class);

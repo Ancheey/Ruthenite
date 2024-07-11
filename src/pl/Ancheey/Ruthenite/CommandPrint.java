@@ -13,8 +13,8 @@ public class CommandPrint extends Command{
     @Override
     public void execute() {
         String outVal = text;
-        if(SeleniumManager.I().getVars().containsKey(text)){
-            outVal = text + ": " + SeleniumManager.I().getVar(text);
+        if(RutheniteCore.I().getVars().containsKey(text)){
+            outVal = text + ": " + RutheniteCore.I().getVar(text);
         }
         MainWindow.I().addTextToConsole(outVal);
     }

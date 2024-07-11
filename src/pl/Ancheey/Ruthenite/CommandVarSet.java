@@ -14,7 +14,7 @@ public class CommandVarSet extends CommandVar{
 
     @Override
     public void execute() {
-        SeleniumManager.I().setVar(varName, getValue());
+        RutheniteCore.I().setVar(varName, getValue());
     }
 
     @Override

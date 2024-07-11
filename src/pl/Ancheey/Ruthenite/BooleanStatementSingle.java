@@ -1,8 +1,5 @@
 package pl.Ancheey.Ruthenite;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.InvalidSelectorException;
-
 public class BooleanStatementSingle implements BooleanStatement{
     SingleVar statement;
     String value;
@@ -18,25 +15,9 @@ public class BooleanStatementSingle implements BooleanStatement{
     public boolean evaluate() {
         switch (statement){
             case EXISTS -> {
-                if(SeleniumManager.I().getVars().containsKey(value)){
-                    return true;
-                }
-                else{
-                    try {
-                        return !SeleniumManager.I().getDriver().findElements(By.xpath(value)).isEmpty();
-                    }
-                    catch(InvalidSelectorException e){
-                        return false;
-                    }
-                }
-            }
+                return RutheniteCore.I().getVars().containsKey(value);}
             case NOT_EXISTS -> {
-                try {
-                    return SeleniumManager.I().getDriver().findElements(By.xpath(value)).isEmpty();
-                }
-                catch(InvalidSelectorException e){
-                    return true;
-                }
+                return !RutheniteCore.I().getVars().containsKey(value);
             }
         }
         return false;

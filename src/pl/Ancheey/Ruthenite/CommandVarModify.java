@@ -22,15 +22,15 @@ public class CommandVarModify extends  CommandVar {
      */
     @Override
     public void execute() {
-        int var = SeleniumManager.I().getVar(varName);
+        int var = RutheniteCore.I().getVar(varName);
         switch (action){
 
-            case INCREMENT -> SeleniumManager.I().setVar(varName, var + getValue());
-            case DECREMENT -> SeleniumManager.I().setVar(varName, var - getValue());
-            case MULTIPLY -> SeleniumManager.I().setVar(varName, var * getValue());
+            case INCREMENT -> RutheniteCore.I().setVar(varName, var + getValue());
+            case DECREMENT -> RutheniteCore.I().setVar(varName, var - getValue());
+            case MULTIPLY -> RutheniteCore.I().setVar(varName, var * getValue());
             case DIVIDE_BY -> {
                 if(getValue() != 0) {
-                    SeleniumManager.I().setVar(varName, var / getValue());
+                    RutheniteCore.I().setVar(varName, var / getValue());
                 }
             }
         }
