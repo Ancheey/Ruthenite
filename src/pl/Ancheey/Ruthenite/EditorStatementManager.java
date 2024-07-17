@@ -42,7 +42,7 @@ public final class EditorStatementManager {
         List<JButton> list = new ArrayList<>();
         getStatements().forEach((value) ->{
             JButton button = new JButton(value.name);
-            button.setBackground(new Color(45,50,65));
+            button.setBackground(new Color(65,50,50));
             button.setForeground(new Color(210,210,210));
             button.setPreferredSize(new Dimension(160,30));
             button.addActionListener((e)-> {
@@ -81,7 +81,7 @@ public final class EditorStatementManager {
 
     /**
      * Saves statements to $dir\statements.
-     * Statements are saved as a .selenite file, but are just a serialized object able to be read by any program
+     * Statements are saved as a .ruth file, but are just a serialized object able to be read by any program
      * @throws IOException If something goes wrong with the output stream, this will be thrown
      */
     public void saveStatements() throws IOException {
@@ -90,7 +90,7 @@ public final class EditorStatementManager {
         File file;
         new File("statements").mkdir();
         for (CommandStatement c: statements) {
-            file = new File("statements", c.name + ".selenite");
+            file = new File("statements", c.name + ".ruth");
             file.createNewFile();
             fos = new FileOutputStream(file.getPath());
             oos = new ObjectOutputStream(fos);
@@ -118,7 +118,7 @@ public final class EditorStatementManager {
                 CommandStatement statement = (CommandStatement) ois.readObject();
                 addStatement(statement, statement.name);
             } catch (Exception e) {
-                MainWindow.I().addTextToConsole("Tried to load " + file.getName() + " but the file is either corrupted or not a selenite object");
+                MainWindow.I().addTextToConsole("Tried to load " + file.getName() + " but the file is either corrupted or not a Ruthenium object");
             }
         }
     }

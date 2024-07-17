@@ -20,9 +20,10 @@ public class EditorItemContainer extends EditorItem{
 
         JButton addStatement = new JButton("Add");
         addStatement.setForeground(new Color(210,210,210));
-        addStatement.setBackground(new Color(45,50,65));
+        addStatement.setBackground(new Color(145,90,90));
+        addStatement.setAlignmentX(0);
 
-        statementContainer.add(addStatement);
+
 
         addStatement.addActionListener(e -> {
             NewCommandDialog ncd = new NewCommandDialog(statement);
@@ -39,5 +40,6 @@ public class EditorItemContainer extends EditorItem{
                 statementContainer.add(new EditorItem(c));
             }
         }
+        statementContainer.add(addStatement);
     }
 }

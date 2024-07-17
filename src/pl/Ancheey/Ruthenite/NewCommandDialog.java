@@ -18,7 +18,7 @@ public class NewCommandDialog extends JDialog {
 
     private List<NewCommandDialogInput> inputs = new ArrayList<>();
 
-    private int savedOffsetFromBottom = 0;
+    private int index = -1;
     private Command edited;
     private JPanel varPanel;
 
@@ -30,7 +30,15 @@ public class NewCommandDialog extends JDialog {
     public NewCommandDialog(Command edited) {
         this.edited = edited;
         this.executor = (CommandStatement) edited.getParent();
-        savedOffsetFromBottom = executor.getCommands().size() - 2 - Arrays.asList(executor.getCommands()).indexOf(edited);
+        for(int i = 0; i < executor.getCommands().size(); i++){
+            if(executor.getCommands().toArray()[i] == edited) {
+                index = i;
+            }
+        }
+        for (Command c : executor.getCommands()){
+
+        }
+
 
         build();
     }
@@ -39,7 +47,7 @@ public class NewCommandDialog extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-        contentPane.setBackground(new Color(45,50,65));
+        contentPane.setBackground(new Color(65,50,50));
 
         buttonOK.addActionListener(e -> onOK());
 
@@ -65,42 +73,42 @@ public class NewCommandDialog extends JDialog {
         }
 
         //Creates the filling for varPanel depending on the first constructor of the class that was selected
-        typeBox.addActionListener((e) ->{
-            if(typeBox.getSelectedIndex() == -1)
-                return;
-
-            //Get the first constructor of the class that is selected
-            Constructor<?> constructor = ((Class<? extends Command>)typeBox.getSelectedItem()).getConstructors()[0];
-            Object[] params = constructor.getParameterTypes();
-            varPanel.removeAll();
-            inputs.clear();
-
-            //for each param that is needed, add a new input.
-            //THIS PART CAN BE EXTENDED
-            //NEEDS REMAKING SO THE IF ELSE IS REPLACED BY A MANAGER OF CLASS - INPUT PAIRS
-            for (Object o: params) {
-                if(o == BooleanStatement.class){
-                    inputs.add(new NewCommandDialogBooleanInput());
-                }else if(o == int.class){
-                    inputs.add(new NewCommandDialogIntInput("Integer"));
-                } else if (o == CommandVarModify.Action.class) {
-                    inputs.add(new NewCommandDialogActionInput());
-                } else{
-                    inputs.add(new NewCommandDialogStringInput("Text"));
-                }
-            }
-            for(NewCommandDialogInput c : inputs){
-                varPanel.add(c);
-            }
-            SwingUtilities.invokeLater(()->{
-                varPanel.revalidate();
-                varPanel.repaint();
-            });
-        });
-
+        typeBox.addActionListener((e) ->ChangeSelectionAction());
         pack();
+        ChangeSelectionAction();
     }
+private void ChangeSelectionAction(){
+        if(typeBox.getSelectedIndex() == -1)
+            return;
 
+        //Get the first constructor of the class that is selected
+        Constructor<?> constructor = ((Class<? extends Command>)typeBox.getSelectedItem()).getConstructors()[0];
+        Object[] params = constructor.getParameterTypes();
+        varPanel.removeAll();
+        inputs.clear();
+
+        //for each param that is needed, add a new input.
+        //THIS PART CAN BE EXTENDED
+        //NEEDS REMAKING SO THE IF ELSE IS REPLACED BY A MANAGER OF CLASS - INPUT PAIRS
+        for (Object o: params) {
+            if(o == BooleanStatement.class){
+                inputs.add(new NewCommandDialogBooleanInput());
+            }else if(o == int.class){
+                inputs.add(new NewCommandDialogIntInput("Integer"));
+            } else if (o == CommandVarModify.Action.class) {
+                inputs.add(new NewCommandDialogActionInput());
+            } else{
+                inputs.add(new NewCommandDialogStringInput("Text"));
+            }
+        }
+        for(NewCommandDialogInput c : inputs){
+            varPanel.add(c);
+        }
+        SwingUtilities.invokeLater(()->{
+            varPanel.revalidate();
+            varPanel.repaint();
+        });
+    }
     /**
      * Oh boy.
      * This part is an absolute clusterf*ck because it breaks every OOP rule in existence.
@@ -127,11 +135,11 @@ public class NewCommandDialog extends JDialog {
 
             //If the creation is a glorified edit of a command, it will try to put commands back inside the statement if it was one to begin with
             //It also removes the old one and replaces it with a new command
-            if(savedOffsetFromBottom == 0) {
+            if(index == -1) {
                 executor.add(c);
             }
             else{
-                executor.add(executor.getCommands().size() - savedOffsetFromBottom,c);
+                executor.add(index,c);
             }
             if(edited != null){
                 executor.remove(edited);

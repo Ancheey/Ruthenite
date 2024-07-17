@@ -55,7 +55,7 @@ public class EditorItem extends JPanel {
         itemEdit = new JButton("Edit");
         itemEdit.setFont(new Font("JetBrains Mono", Font.PLAIN, 8));
         itemEdit.setForeground(new Color(210,210,210));
-        itemEdit.setBackground(new Color(45,50,65));
+        itemEdit.setBackground(new Color(65,50,50));
         itemEdit.setPreferredSize(new Dimension(60,20));
         buttonPanel.add(itemEdit);
 

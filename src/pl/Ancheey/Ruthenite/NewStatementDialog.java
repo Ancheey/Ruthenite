@@ -18,12 +18,12 @@ public class NewStatementDialog extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-        contentPane.setBackground(new Color(45,50,65));
-        buttonCancel.setBackground(new Color(45,50,65));
+        contentPane.setBackground(new Color(65,50,50));
+        buttonCancel.setBackground(new Color(65,50,50));
         buttonCancel.setForeground(new Color(210,210,210));
-        buttonOK.setBackground(new Color(45,50,65));
+        buttonOK.setBackground(new Color(65,50,50));
         buttonOK.setForeground(new Color(210,210,210));
-        statementName.setBackground(new Color(30,35,50));
+        statementName.setBackground(new Color(50,35,35));
         statementName.setForeground(new Color(210,210,210));
 
         buttonOK.addActionListener(e -> onOK());
